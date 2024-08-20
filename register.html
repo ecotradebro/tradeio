@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kostenlos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <div class="form-container">
+            <div class="form">
+                <h2>Login Form</h2>
+                <form id="loginForm">
+                    <div class="inputbox">
+                        <input type="text" id="username" required>
+                        <span>Username</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" id="email" required>
+                        <span>E-mail</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" id="phone" required>
+                        <span>Wann Hast du Zeit?</span>
+                    </div>
+                    <input type="submit" value="Submit" class="sub" id="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCsLqheMOmpMy2QAQG6tEHgxQyP3vPfAuM",
+            authDomain: "database-dd372.firebaseapp.com",
+            databaseURL: "https://database-dd372-default-rtdb.firebaseio.com/",
+            projectId: "database-dd372",
+            storageBucket: "database-dd372.appspot.com",
+            messagingSenderId: "291966710189",
+            appId: "1:291966710189:web:a709ff7d8a091a0fe93124",
+            measurementId: "G-RL0831V505"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        document.getElementById("loginForm").addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            
+            set(ref(db, 'user/' + username), {
+                username: username,
+                email: email,
+                phone: phone
+            }).then(() => {
+                alert("Login Successful!");
+            }).catch((error) => {
+                alert("Error: " + error.message);
+            });
+        });
+    </script>
+</body>
+</html>

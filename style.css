@@ -1,0 +1,124 @@
+
+        /* Hightech-Hintergrund mit blauem und glühendem Effekt */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: radial-gradient(circle, #1e3c72, #2a5298);
+            color: #ffffff;
+            text-align: center;
+            margin: 200;
+            padding: 100;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ffffff; /* Schriftfarbe weiß */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            margin-top: 100px;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px auto;
+            max-width: 800px;
+            color: #ffffff; /* Textfarbe weiß */
+        }
+
+        /* Hightech-Button-Design */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: #ffffff;
+            background: #000000; /* Buttonfarbe schwarz */
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: none;
+            margin-top: 50px;
+        }
+
+        .btn:hover {
+            background: #333333;
+            box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 60px #ffffff;
+        }
+
+        /* Glühende Linien-Animation */
+        .glow-line {
+            width: 60%;
+            height: 5px;
+            background: linear-gradient(to right, transparent, #ffffff, transparent);
+            margin: 40px auto;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px #ffffff, 0 0 60px #ffffff;
+            }
+            50% {
+                box-shadow: 0 0 10px #ffffff, 0 0 30px #ffffff;
+            }
+        }
+
+        /* Formular-Design als Karte mit Hightech-Glow-Hintergrund */
+        .form-container {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #000000, #2a5298);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.6);
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            color: #000000;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        input[type="submit"] {
+            background: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background: #333333;
+            box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 60px #ffffff;
+        }
+
+        /* Fehlermeldung */
+        .error-message {
+            color: #ff0000;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Fixed iframe styling */
+        .fixed-iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 0; /* Hinter den anderen Elementen */
+            overflow: hidden;
+        }

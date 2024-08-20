@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>EcoTrade</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.1.0/tsparticles.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #000000, #003366);
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+body {
+  background-image: radial-gradient(
+      circle at 20% 100%,
+      rgba(184, 184, 184, 0.1) 0%,
+      rgba(184, 184, 184, 0.1) 33%,
+      rgba(96, 96, 96, 0.1) 33%,
+      rgba(96, 96, 96, 0.1) 66%,
+      rgba(7, 7, 7, 0.1) 66%,
+      rgba(7, 7, 7, 0.1) 99%
+    ),
+    linear-gradient(40deg, #040a22, #162561, #202e64, #6f7aa6);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 50% 45%;
+  place-items: center;
+  gap: 60px;
+  min-height: 100vh;
+  padding: 20px 60px;
+}
+
+/* CONTENT */
+
+.content {
+  max-width: 2400px;
+}
+
+.content h1 {
+  font-family: "Comfortaa", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  margin-bottom: 36px;
+  color: #fff;
+}
+
+.content p {
+  font-size: clamp(1rem, 4vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.content button {
+  background: #eaeaea;
+  color: #202134;
+  font-size: clamp(0.9rem, 4vw, 1rem);
+  font-weight: 600;
+  border: 0;
+  outline: 0;
+  padding: 8px 14px;
+  border-radius: 7px;
+  transform: scale(1);
+  transition: all 0.4s ease-in;
+  cursor: pointer;
+}
+
+.content button:is(:hover, :focus) {
+  transform: scale(0.98);
+  background-color: #6f7aa6;
+  color: #eaeaea;
+}
+
+/* SLIDER */
+
+.swiper {
+  position: relative;
+  width: 400px;
+  height: 490px;
+}
+
+.swiper-slide {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  user-select: none;
+  border-radius: 20px;
+}
+
+.cost {
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  padding: 6px 10px;
+  color: #fff;
+  font-size: clamp(0.8rem, 4vw, 0.9rem);
+  font-weight: 600;
+}
+
+.dark-text {
+  color: #202134;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.overlay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  padding: 10px 20px;
+  background: rgba(93, 95, 145, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 0 0 20px 20px;
+}
+
+.overlay h1 {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  font-weight: 600;
+}
+
+.overlay p {
+  font-size: clamp(0.8rem, 4vw, 0.9rem);
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+.ratings {
+  display: flex;
+  column-gap: 10px;
+  margin-top: -6px;
+}
+
+.ratings span {
+  font-size: clamp(0.8rem, 4vw, 0.9rem);
+  font-weight: 300;
+}
+
+.star {
+  color: #afe312;
+}
+
+@media (max-width: 1050px) {
+  .swiper {
+    width: 350px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 930px) {
+  section {
+    grid-template-columns: 100%;
+    grid-template-rows: 55% 40%;
+    grid-template-areas:
+      "slider"
+      "content";
+    place-items: center;
+    gap: 64px;
+    padding: 60px;
+  }
+
+  .swiper {
+    grid-area: slider;
+  }
+
+  .content {
+    grid-area: content;
+    text-align: center;
+  }
+
+  .content h1 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 470px) {
+  section {
+    padding: 40px 40px 60px;
+  }
+
+  .swiper {
+    width: 300px;
+    height: 400px;
+  }
+}
+        .wrapper,
+        .content {
+            position: relative;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .content {
+            overflow-x: hidden;
+        }
+
+        .content .section {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .content .section.hero {
+            background-image: url(https://images.unsplash.com/photo-1589848315097-ba7b903cc1cc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            perspective: 500px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 100px;
+            position: relative;
+        }
+
+        h1::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 5px;
+            background: linear-gradient(to right, transparent, #ffffff, transparent);
+            box-shadow: 0 0 10px #ffffff;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 20px auto;
+            max-width: 800px;
+            color: #ffffff;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #ffffff;
+            background: #000000;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: none;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            background: #333333;
+            box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 60px #ffffff;
+        }
+
+        .glow-line {
+            width: 60%;
+            height: 5px;
+            background: linear-gradient(to right, transparent, #ffffff, transparent);
+            margin: 40px auto;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px #ffffff, 0 0 60px #ffffff;
+            }
+            50% {
+                box-shadow: 0 0 10px #ffffff, 0 0 30px #ffffff;
+            }
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 300px;
+            background: #000000;
+            color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 2px solid #333333;
+        }
+
+        .card-content {
+            padding: 10px;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #cccccc;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #ffffff, 0 0 60px #ffffff;
+        }
+
+        .about-us {
+            background: #000000;
+            padding: 50px;
+            margin: 50px auto;
+            max-width: 1200px;
+        }
+
+        .about-us h2 {
+            font-size: 2.5em;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .about-us p {
+            font-size: 1.2em;
+            color: #cccccc;
+        }
+
+        .cta_box {
+            display: block;
+            background: #1e3c72;
+            color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta_box:hover {
+            background: #2a5298;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .button-big {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            border-radius: 50px;
+            display: inline-block;
+            color: #ffffff;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .button-big:hover {
+            background: linear-gradient(135deg, #0097a7, #00bcd4);
+            transform: scale(1.05);
+        }
+
+        .button-text-big {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .h5 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .services {
+            background: #1e3c72;
+            padding: 50px;
+            margin: 50px auto;
+            max-width: 1200px;
+            position: relative;
+        }
+
+        .services h2 {
+            font-size: 2.5em;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .services p {
+            font-size: 1.2em;
+            color: #cccccc;
+        }
+
+        .service-item {
+            background: #000000;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 0 15px #ffffff;
+            position: relative;
+        }
+
+        .service-item h3 {
+            font-size: 1.8em;
+            color: #ffffff;
+        }
+
+        .service-item p {
+            font-size: 1em;
+            color: #cccccc;
+        }
+
+        /* Swiper CSS */
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            margin-top: 50px;
+            z-index: 1;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* tsParticles container */
+        #tsparticles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+ .quote-container {
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid #f36f6f;
+            border-radius: 5px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .quote-container::before {
+            content: '“';
+            font-size: 4em;
+            color: #f36f6f;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+        }
+
+        .quote-container::after {
+            content: '”';
+            font-size: 4em;
+            color: #f36f6f;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+        }
+
+        .quote-text {
+            font-size: 1.5em;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 1.2em;
+            color: #eaeaea;
+            margin-top: 20px;
+        }
+.adjust-text {
+    margin-top: 100px; /* oder ein anderer Wert, den du benötigst */
+}
+
+.blue-text {
+            color: red; /* Textfarbe auf Blau setzen */
+            font-family: 'Roboto', sans-serif; /* Schriftart auf Roboto setzen */
+            font-size: 1.2em; /* Schriftgröße anpassen */
+            display: flex; /* Flexbox verwenden */
+            align-items: center; /* Vertikale Zentrierung der Elemente */
+        }
+        .blue-text .emoji {
+            margin-right: 50px; /* Abstand zwischen Emoji und Text */
+            font-size: 1.5em; /* Optionale Größe des Emojis */
+        }
+
+
+    </style>
+    </style>
+</head>
+<body>
+    <h1>EcoTrade</h1>
+    <div class="glow-line"></div>
+    <p>Lerne alles über Trading und starte erfolgreich durch! Melde dich jetzt an und erhalte kostenlosen Zugang zu exklusiven Inhalten.</p>
+    <a href="register.html" class="btn">Jetzt beitreten</a>
+<!-- Swiper Slider -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/logo.png"800x600?text=Slide+2" alt="Slide 2"></div>
+                    <div class="swiper-slide"><img src="images/app.png"800x600?text=Slide+2" alt="Slide 2"></div>
+                    <div class="swiper-slide"><img src="images/bald.png"800x600?text=Slide+3" alt="Slide 3"></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+ <div class="text-lg">
+    <p class="adjust-text">Wahrscheinlich hast du auch keinen Nerv mehr für die negativen und nervigen Kommentare der Neider und Klatscher in deinem Umfeld.</p>
+  <div class="text-lg blue-text">
+        <span class="emoji">🗨️</span>"Niemals schaffst du des!"
+    </div>
+    <div class="text-lg blue-text">
+        <span class="emoji">🗨️</span>"Deine Ferrari in deinen Träumen!"
+    </div>
+   <p class="adjust-text">Und dir ist schon lange klar, dass der traditionelle Weg von der Schulbank direkt in den 9-to-5-Job längst nicht die einzige Möglichkeit ist.</p>
+</div>
+
+
+    <!-- Über uns -->
+    <div class="about-us">
+        <h2>Über uns</h2>
+        <p>EcoTrade ist eine führende Plattform für den erfolgreichen Handel. Wir bieten umfassende Handelslösungen, professionelle Beratung und eine benutzerfreundliche Plattform für Trader aller Erfahrungsstufen.</p>
+    </div>
+
+    <!-- Leistungen -->
+    <div class="services">
+        <h2>Unsere Leistungen</h2>
+        <div class="service-item">
+            <h3>Dropshipping</h3>
+            <p>Erhalte detaillierte ein kostenloses full A-Z Dropshipping Tutorial</p>
+        </div>
+        <div class="service-item">
+            <h3>Premium Signal</h3>
+            <p>Erhalte detaillierte Premium Signale mit EcoTrade App </p>
+        </div>
+        <div class="service-item">
+            <h3>Support</h3>
+            <p>Unser engagiertes Support-Team steht dir rund um die Uhr zur Verfügung, um deine Fragen zu beantworten.</p> 
+
+            <!-- tsParticles container -->
+            <div id="tsparticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="" class="cta_box">
+        <span class="button-text-big">Erfahre mehr über unsere Angebote</span>
+        <span class="button-big">bald</span>
+    </a>
+
+    <script>
+        // Swiper JS Initialization
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'cube',
+            grabCursor: true,
+            cubeEffect: {
+                shadow: true,
+                slideShadows: true,
+                shadowOffset: 20,
+                shadowScale: 0.94,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // tsParticles Initialization
+        tsParticles.load('tsparticles', {
+            particles: {
+                number: {
+                    value: 50,
+                },
+                color: {
+                    value: '#ffffff',
+                },
+                shape: {
+                    type: 'circle',
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 1,
+                        minimumValue: 0.1,
+                    },
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                },
+                links: {
+                    enable: true,
+                    color: '#ffffff',
+                    distance: 150,
+                    opacity: 0.4,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    outMode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200,
+                    },
+                },
+            },
+            interactivity: {
+                detectsOn: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse',
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push',
+                    },
+                    resize: true,
+                },
+            },
+            retina_detect: true,
+        });
+    </script>
+</body>
+</html>
